@@ -174,3 +174,7 @@ $RECYCLE.BIN/
 
 # === Godot ===
 .godot/
+
+# Raw frame dumps from run-and-observe captures (keep only the chosen screenshots)
+production/qa/evidence/**/_tmp/
+production/qa/evidence/**/raw*/
