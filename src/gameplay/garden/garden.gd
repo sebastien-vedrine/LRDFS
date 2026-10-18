@@ -896,3 +896,18 @@ func _build_player(player_cfg: Dictionary) -> void:
 		Vector2(-_half.x + margin, -_half.y + margin),
 		Vector2(_half.x - margin, _half.y - margin))
 	add_child(player)
+	_build_flowers(player)
+
+
+## Story 002: seed/plant/water/bloom loop and its HUD (see FlowerManager).
+func _build_flowers(player: GardenPlayer) -> void:
+	var hud := GardenHud.new()
+	hud.name = "Hud"
+	add_child(hud)
+	var manager := FlowerManager.new()
+	manager.name = "FlowerManager"
+	manager.configure(player.get_camera(), player, get_plots(), ground_height)
+	manager.hint_changed.connect(hud.set_hint)
+	manager.carried_changed.connect(hud.set_carried)
+	add_child(manager)
+	hud.set_carried_format(manager.get_string("carried_label"))

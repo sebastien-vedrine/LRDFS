@@ -60,6 +60,26 @@ func configure(cfg: Dictionary, bounds_min: Vector2, bounds_max: Vector2) -> voi
 	_camera.rotation.x = _pitch
 
 
+## The first-person camera (the interaction ray starts here).
+func get_camera() -> Camera3D:
+	return _camera
+
+
+## True while the mouse is captured (look/interact active).
+func is_mouse_captured() -> bool:
+	return Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+
+
+## Turns the view towards a world-space point (used by debug captures).
+func face_point(world_point: Vector3) -> void:
+	var eye: Vector3 = _camera.global_position
+	var dir: Vector3 = world_point - eye
+	rotation.y = atan2(-dir.x, -dir.z)
+	var flat: float = Vector2(dir.x, dir.z).length()
+	_pitch = clampf(atan2(dir.y, flat), -_pitch_limit, _pitch_limit)
+	_camera.rotation.x = _pitch
+
+
 func _ready() -> void:
 	_set_mouse_captured(true)
 
@@ -71,6 +91,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.pressed \
 			and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		_set_mouse_captured(true)
+		# This click only recaptures the mouse; it must not also interact (Story 002).
+		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var motion := event as InputEventMouseMotion
 		_apply_look(motion.relative.x * _mouse_sensitivity, motion.relative.y * _mouse_sensitivity)

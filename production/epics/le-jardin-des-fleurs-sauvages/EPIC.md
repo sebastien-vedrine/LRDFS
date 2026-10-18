@@ -21,7 +21,7 @@ Jardin et geste → un souvenir complet → les cinq autres → écran final →
 | # | Story | Type | Status | ADR |
 |---|-------|------|--------|-----|
 | 001 | Jardin 3D, caméra et déplacement | Visual/Feel | Complete | N/A |
-| 002 | Geste planter/arroser et floraison | Visual/Feel | Ready | N/A |
+| 002 | Geste planter/arroser et floraison | Visual/Feel | Complete | N/A |
 | 003 | Scène de souvenir + souvenir « rencontre » | UI | Ready | N/A |
 | 004 | Les cinq autres souvenirs | UI | Ready | N/A |
 | 005 | Écran final et message | UI | Ready | N/A |

@@ -1,12 +1,12 @@
 # Story 002: Geste planter/arroser et floraison
 
 > **Epic**: Le jardin des fleurs sauvages
-> **Status**: Ready
+> **Status**: Complete
 > **Layer**: Core
 > **Type**: Visual/Feel
 > **Estimate**: [fill before starting]
 > **Manifest Version**: N/A (minimal — no control manifest)
-> **Last Updated**: [set by /dev-story when implementation begins]
+> **Last Updated**: 2026-10-18
 
 ## Context
 
@@ -28,11 +28,11 @@
 
 *From `design/game-brief.md` (the **Player goal & fail state** field + the MVP feature this story implements), scoped to this story:*
 
-- [ ] Amandine peut ramasser une graine, la planter à un emplacement libre, puis l'arroser par un geste simple (clic).
-- [ ] Il n'existe aucun échec possible : aucune action ne bloque ni ne perd la progression.
-- [ ] Arroser une graine plantée déclenche une animation de floraison lisible.
-- [ ] Une fleur épanouie reste dans le jardin et son éclosion déclenche l'événement de souvenir lié (signal `flower_bloomed`).
-- [ ] Les six graines se débloquent dans l'ordre de la fiche : rencontre, Boston, bague, Forrest, Seda, renaissance.
+- [x] Amandine peut ramasser une graine, la planter à un emplacement libre, puis l'arroser par un geste simple (clic).
+- [x] Il n'existe aucun échec possible : aucune action ne bloque ni ne perd la progression.
+- [x] Arroser une graine plantée déclenche une animation de floraison lisible.
+- [x] Une fleur épanouie reste dans le jardin et son éclosion déclenche l'événement de souvenir lié (signal `flower_bloomed`).
+- [x] Les six graines se débloquent dans l'ordre de la fiche : rencontre, Boston, bague, Forrest, Seda, renaissance.
 
 ---
 
@@ -63,7 +63,7 @@
 **Story Type**: Visual/Feel
 **Required evidence**: a retained screenshot in `production/qa/evidence/` + sign-off in `production/qa/evidence/planter-arroser-evidence.md`
 
-**Status**: [ ] Not yet created
+**Status**: [x] Created — see Completion Notes
 
 ---
 
@@ -71,3 +71,12 @@
 
 - Depends on: Story 001
 - Unlocks: Story 003
+
+---
+
+## Completion Notes
+**Completed**: 2026-10-18
+**Criteria**: 5/5 passing — manette non testée ; ressenti du geste (poids, réactivité) DEFERRED à un test de jeu plus large
+**Deviations**: ADVISORY — valeurs de repli en dur dans le code (tailles de fleurs, etc.) en plus de `assets/data/flowers.json` (même sujet que TD-002) ; trois petites fleurs discrètes depuis le point de départ
+**Test Evidence**: Visual/Feel — fiche `production/qa/evidence/planter-arroser-evidence.md` (accord signé 2026-10-18), captures dans `production/qa/evidence/planter-arroser/`
+**Code Review**: Skipped (solo)
