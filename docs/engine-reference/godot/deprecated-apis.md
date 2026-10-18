@@ -1,6 +1,6 @@
 # Godot — Deprecated APIs
 
-Last verified: 2026-02-12
+Last verified: 2026-10-18 (4.6→4.7 section); older sections 2026-02-12
 
 If an agent suggests any API in the "Deprecated" column, it MUST be replaced
 with the "Use Instead" column.
@@ -41,3 +41,16 @@ with the "Use Instead" column.
 | `Texture2D` in `Shader.set_default_texture_parameter()` / `get_default_texture_parameter()` | `Texture` base type | Changed in 4.4; the shading language's `sampler2D` / `texture()` did not change |
 | Manual post-process viewport chains | `Compositor` + `CompositorEffect` | Structured post-processing (4.3+) |
 | GodotPhysics3D for new projects | Jolt Physics 3D | Default since 4.6; better stability |
+
+## 4.6 → 4.7 (added 2026-10-18)
+
+Source: https://docs.godotengine.org/en/stable/tutorials/migrating/upgrading_to_godot_4.7.html
+
+| Deprecated / removed | Use Instead | Since | Notes |
+|----------------------|-------------|-------|-------|
+| `AudioEffectSpectrumAnalyzer.tap_back_pos` | None named in the guide | 4.7 | Removed |
+| `RichTextLabel.ImageUpdateMask.UPDATE_WIDTH_IN_PERCENT` | `UPDATE_WIDTH_UNIT` | 4.7 | Renamed |
+| `width_in_percent` / `height_in_percent` args of `RichTextLabel.add_image` / `update_image` | `width_unit` / `height_unit` (`RichTextLabel.ImageUnit`) | 4.7 | Renamed; type changed from `bool` |
+| `RenderingServer.particles_request_process_time` arg `time` | `process_time` | 4.7 | Renamed |
+| `ImageTexture.get_format`, `PortableCompressedTexture2D.get_format` | `Texture2D.get_format` | 4.7 | Moved to base class |
+| `EditorSceneFormatImporter.IMPORT_*` constants | `EditorSceneFormatImporter.ImportFlags` enum | 4.7 | Moved |

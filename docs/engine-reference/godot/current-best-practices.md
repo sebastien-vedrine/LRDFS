@@ -1,6 +1,6 @@
 # Godot — Current Best Practices
 
-Last verified: 2026-02-12 | Engine: Godot 4.6
+Last verified: 2026-10-18 (4.7 section); older sections 2026-02-12 | Engine: Godot 4.7
 
 Practices that are **new or changed** since the model's training data (~4.3).
 This supplements (not replaces) the agent's built-in knowledge.
@@ -163,3 +163,20 @@ Sources:
 - **SDL3 gamepad driver**: Better cross-platform gamepad support
 - **Android**: Edge-to-edge display, camera feed access, 16KB page support (Android 15+)
 - **Linux**: Wayland subwindow support for multi-window capability
+
+## 4.7 additions (added 2026-10-18)
+
+Sources: https://godotengine.org/releases/4.7/ · https://docs.godotengine.org/en/stable/tutorials/migrating/upgrading_to_godot_4.7.html
+
+Only items stated on those pages. Usage details beyond the names below are
+NOT SOURCEABLE from them — check the class reference before using any.
+
+- **`Tween.tween_await()`**: pauses a tween until a signal fires (useful for sequencing narrative beats).
+- **`Control` offset transforms**: position, rotation and scale can be applied without being overwritten by containers.
+- **`RichTextLabel`**: images can scale relative to font size.
+- **`AreaLight3D`**: new node for rectangular real-time lights (softer shadows, more realistic reflections).
+- **Rendering**: 3D particles can be scaled and rotated; clearcoat in `BaseMaterial3D` improved; nearest-neighbour filtering for 3D resolution scaling.
+- **CSG Autosmooth**: smooth/sharp faces from a Smoothing Angle (default 50°).
+- **Input**: `InputEvent.DEVICE_ID_MOUSE` / `DEVICE_ID_KEYBOARD` constants.
+- **Export**: an export template downloader fetches templates per platform/architecture.
+- **Accessibility**: landmark navigation for screen-reader users.

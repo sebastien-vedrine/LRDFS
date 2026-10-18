@@ -1,6 +1,6 @@
 # Godot — Breaking Changes
 
-Last verified: 2026-02-12
+Last verified: 2026-10-18 (4.6→4.7 section); older sections 2026-02-12
 
 Changes between Godot versions, focused on post-LLM-cutoff changes (4.4+).
 
@@ -68,3 +68,28 @@ Changes between Godot versions, focused on post-LLM-cutoff changes (4.4+).
 | Navigation | `NavigationRegion2D` | Removed `avoidance_layers`, `constrain_avoidance` properties |
 | Editor | `EditorSceneFormatImporterFBX` | Renamed to `EditorSceneFormatImporterFBX2GLTF` |
 | Animation | AnimationMixer base class | AnimationPlayer and AnimationTree now extend AnimationMixer |
+
+## 4.6 → 4.7 (2026-06-18 — POST-CUTOFF, HIGH RISK)
+
+Last verified: 2026-10-18 — source: https://docs.godotengine.org/en/stable/tutorials/migrating/upgrading_to_godot_4.7.html
+
+| Subsystem | Change | Details |
+|-----------|--------|---------|
+| Physics (Jolt) | `WorldBoundaryShape3D` sign of `plane.d` | Interpreted opposite to 4.6. Flip the sign to keep 4.6 behaviour. |
+| Physics (Jolt) | `SoftBody3D` mass | 1 kg for the whole body, not per point. |
+| Physics (Jolt) | `SoftBody3D.linear_stiffness` | Applied differently; re-tune `linear_stiffness` and `damping_coefficient`. |
+| Physics (Jolt) | `Area3D` vs `SoftBody3D` | Area3D now reports overlaps with SoftBody3D. Use collision layers/masks to exclude. |
+| Rendering | `LinearToSRGB` visual shader | No longer clamps to [0, 1] on Mobile and Forward+. |
+| Rendering | `CanvasItem` lines | No antialiasing feather, so lines look thinner. Use a larger width. |
+| Rendering | `rendering/reflections/sky_reflections/roughness_layers` default | 7 → 8. |
+| GDScript | Packed array element assignment | Setting an element no longer calls the setter of the whole packed-array property. |
+| GDScript | Overrides of methods with typed return | Inherit the return type and need an explicit return; add `return null` to fix the error. |
+| Input | Mouse/keyboard device IDs | `0` → `InputEvent.DEVICE_ID_MOUSE` / `InputEvent.DEVICE_ID_KEYBOARD`. Compare `InputEvent.device` to the constants or check by event type. |
+| UI | `RichTextLabel.add_image` / `update_image` | `width`/`height` are `float`; `width_in_percent`/`height_in_percent` renamed `width_unit`/`height_unit` (type `RichTextLabel.ImageUnit`); enum `UPDATE_WIDTH_IN_PERCENT` → `UPDATE_WIDTH_UNIT`. |
+| UI | `Control.accessibility_live` | Type is now `AccessibilityServer.AccessibilityLiveMode`. |
+| Audio | `AudioStreamPlayer` default `area_mask` | Layer `1` → `0`. Set it back to layer 1 if using `audio_bus_override` on `Area2D`/`Area3D` with the default mask. |
+| Audio | `AudioEffectSpectrumAnalyzer.tap_back_pos` | Removed; the guide names no replacement. |
+| Animation | `LookAtModifier3D.relative` default | `true` → `false`. |
+| Text | `ResourceImporterDynamicFont.hinting` default | 1 → 3. |
+| Editor | New-project stretch defaults | Stretch mode `canvas_items`, aspect `expand` (was `disabled`/`keep`); new projects only. |
+| Core | `Object.is_class` | `class` parameter is `StringName`, not `String`. |
